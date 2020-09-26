@@ -4,7 +4,8 @@ internal class Curso() {
     var codigoCurso: Int = 0
     var quantidadeMaximaAlunos: Int = 0
     var listaDeAlunosMatriculados: MutableList<Aluno> = mutableListOf<Aluno>()
-    init{var professorTitular: ProfessorTitular}
+    lateinit var professorTitular: ProfessorTitular
+    lateinit var professorAdjunto: ProfessorAdjunto
 
     private fun adicionarUmAluno(aluno: Aluno): Boolean {
         if(listaDeAlunosMatriculados.size < quantidadeMaximaAlunos){

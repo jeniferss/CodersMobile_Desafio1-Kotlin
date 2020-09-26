@@ -1,3 +1,5 @@
+import java.time.LocalDateTime
+
 internal class DigitalHouseManager {
 
     var listaDeAlunos: MutableList<Aluno> = mutableListOf()
@@ -33,5 +35,27 @@ internal class DigitalHouseManager {
         listaDeProfesores.forEach {
             if(codigoProfessor == it.codigoProfessor) listaDeProfesores.removeAt(codigoProfessor)
         }
+    }
+
+    private fun matricularAluno(nome: String, sobrenome: String, codigoAluno: Int){
+        val newAluno = Aluno(nome, sobrenome, codigoAluno)
+        listaDeAlunos.add(newAluno)
+    }
+
+    private fun matricularAluno(codigoAluno: Int, codigoProfessor: Int){
+        val aluno = listaDeAlunos.get(codigoAluno)
+        val curso = listaDeCursos.get(codigoProfessor)
+        if(curso.quantidadeMaximaAlunos < curso.listaDeAlunosMatriculados.size){
+            val newMatricula = Matricula(aluno, curso, LocalDateTime.now())
+            listaDeMatriculas.add(newMatricula)
+            println("Matrícula Realizada Com Sucesso")
+        } else println("A matrícula não pôde ser realizada. Não há vagas disponiveis")
+    }
+
+    private fun alocarProfessores(codigoCurso: Int, codigoProfessorTitular: Int, codigoProfessorAdjunto: Int){
+        val curso = listaDeCursos.get(codigoCurso)
+
+        curso.professorTitular = listaDeProfesores.get(codigoProfessorTitular) as ProfessorTitular
+        curso.professorAdjunto = listaDeProfesores.get(codigoProfessorAdjunto) as ProfessorAdjunto
     }
 }
