@@ -1,8 +1,10 @@
-internal class Curso (val nomeDoCurso: String,
-                      val codigoCurso: Int,
-                      professorTitular: ProfessorTitular,
-                      var quantidadeMaximaAlunos: Int,
-                      val listaDeAlunosMatriculados: MutableList<Aluno>) {
+internal class Curso() {
+
+    var nomeDoCurso: String = ""
+    var codigoCurso: Int = 0
+    var quantidadeMaximaAlunos: Int = 0
+    var listaDeAlunosMatriculados: MutableList<Aluno> = mutableListOf<Aluno>()
+    init{var professorTitular: ProfessorTitular}
 
     private fun adicionarUmAluno(aluno: Aluno): Boolean {
         if(listaDeAlunosMatriculados.size < quantidadeMaximaAlunos){
