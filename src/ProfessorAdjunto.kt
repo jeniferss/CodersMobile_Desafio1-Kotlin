@@ -3,4 +3,5 @@ internal class ProfessorAdjunto(nome: String,
                                 tempoDeCasa: Int,
                                 codigoProfessor: Int,
                                 var horasDeMonitoria: Int): Professor(nome, sobrenome, tempoDeCasa, codigoProfessor) {
+
 }
