@@ -1,6 +1,6 @@
 import java.time.LocalDateTime
 
-internal class DigitalHouseManager {
+class DigitalHouseManager {
 
     var listaDeAlunos: ArrayList<Aluno> = arrayListOf()
     var listaDeProfesores: ArrayList<Professor> = arrayListOf()
@@ -57,24 +57,35 @@ internal class DigitalHouseManager {
                             val newMatricula = Matricula(aluno, curso, LocalDateTime.now())
                             listaDeMatriculas.add(newMatricula)
                             println("Matrícula Realizada Com Sucesso")
-                        }
-                        else println("A matrícula não pôde ser realizada. Não há vagas disponiveis")
+                            break
+                        } else println("A matrícula não pôde ser realizada. Não há vagas disponiveis")
                     }
                 }
+                break
             }
         }
     }
 
    fun alocarProfessores(codigoCurso: Int, codigoProfessorTitular: Int, codigoProfessorAdjunto: Int) {
-
-
        listaDeCursos.forEach { itC ->
            if (codigoCurso == itC.codigoCurso) {
-              for (professor in listaDeProfesores){
+               for (professor in listaDeProfesores) {
                    if (codigoProfessorAdjunto == professor.codigoProfessor) itC.professorAdjunto = professor as ProfessorAdjunto
                    if (codigoProfessorTitular == professor.codigoProfessor) itC.professorTitular = professor as ProfessorTitular
                }
            }
        }
    }
+
+
+    /*
+    fun testarExcluirAluno(codigoCurso: Int) {
+        for(curso in listaDeCursos){
+            if(codigoCurso == curso.codigoCurso){
+                curso.excluirAluno(curso.listaDeAlunosMatriculados[0])
+                break
+            }
+        }
+    }
+     */
 }
